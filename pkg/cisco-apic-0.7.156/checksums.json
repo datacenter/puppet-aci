@@ -1,0 +1,20 @@
+{
+  "Modulefile": "bebdbe5e34aef22d330ff6aeaec24650",
+  "Modulefile.tmpl": "b6d4bfe0f9bac70df82fd27ca444b9b4",
+  "README.md": "57ddbb9c78ca8b2adf400b502e180d40",
+  "build.sh": "5c5078a74f939f1fa1692a0be869776c",
+  "device.conf": "f5565e717fc4205dd6ec0d60a3d3d33b",
+  "env.sh": "9e94c1f6ca68b3f226f77e01bfa1b4b3",
+  "gems/acirb-0.7.gem": "fa953970497f53d6eedfa79918351d8d",
+  "lib/puppet/provider/apic/apic.rb": "13e6a6700c8dc9eb609e8c7b68d7dab9",
+  "lib/puppet/type/apic.rb": "685979921c414447077b7ad96e44961d",
+  "lib/puppet/util/network_device/apic/device.rb": "9b9e1379c04c213bbfa2153ae1d3e396",
+  "lib/puppet/util/network_device/apic.rb": "131e292f2e15a55a9b15ee5e95023fef",
+  "manifests/README.txt": "f12dd301218d2bacc2bf2d306986e167",
+  "manifests/site.pp": "46fd751384db3feff0189a5d4a58b948",
+  "metadata.json": "7f481a604434821302464039fac20d45",
+  "package.sh": "309d917ddaafa84c728b658403fb407f",
+  "puppetdevice.sh": "98a7a54fa871df9868b32d99e785ced0",
+  "puppetmaster.sh": "18be02554ea8426d522f12e52e98b9c1",
+  "tests/init.pp": "68b329da9893e34099c7d8ad5cb9c940"
+}

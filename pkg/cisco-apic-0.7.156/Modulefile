@@ -1,0 +1,8 @@
+name    'cisco-apic'
+version '0.7.156'
+source 'Cisco Advanced Services'
+author 'palesiak@cisco.com'
+license 'Apache License, Version 2.0'
+summary 'Provider and types for managing Cisco APIC'
+description 'Contains the providers and types for managing the Cisco APIC via the Northbound REST API'
+project_page 'www.cisco.com'
