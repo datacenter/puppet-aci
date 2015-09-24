@@ -1,4 +1,4 @@
-require 'ACIrb'
+require 'acirb'
 require 'puppet'
 require 'puppet/util'
 require 'puppet/util/network_device/apic'
