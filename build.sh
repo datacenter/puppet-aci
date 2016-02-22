@@ -1,5 +1,12 @@
 #!/bin/bash
-version=$(ruby -e 'require "acirb"; puts ACIrb::VERSION')
+
+# this is the main puppet binary
+PUPPET_PATH=/opt/puppetlabs/bin/puppet
+
+# this is the path for puppet's bundled ruby, gem, etc. utils
+PUPPET_UTILS_PATH=/opt/puppetlabs/puppet/bin
+
+version=$(${PUPPET_UTILS_PATH}/ruby -e 'require "acirb"; puts ACIrb::VERSION'|sed -e 's/\([0-9]\+\.[0-9]\+\).*/\1/' )
 echo "Using ACIrb Gem version $version"
 
 # increment build number
@@ -13,15 +20,19 @@ build=$((build+1))
 echo $build > .build
 
 # insert new version into Modulefile
-sed -e "s/\$VERSION/$version.$build/g" < Modulefile.tmpl > Modulefile
+# sed -e "s/\$VERSION/$version.$build/g" < Modulefile.tmpl > Modulefile
+sed -e "s/\$VERSION/$version.$build/g" < metadata.json.tmpl > metadata.json
 
 FAILED=0
-puppet module build --verbose || FAILED=1
+${PUPPET_PATH} module build --verbose || FAILED=1
 if [ $FAILED -ne 0 ] ; then
 	echo "Puppet module build did not complete successfully. Printing trace"
-	puppet module build --trace
+	${PUPPET_PATH} module build --trace
 	exit 1
 fi
-puppet module uninstall cisco-apic || true
-puppet module install -f pkg/cisco-apic-$version.$build.tar.gz
+
+(cd pkg; rm puppet-aci-latest.tar.gz; ln -s puppet-aci-$version.$build.tar.gz puppet-aci-latest.tar.gz)
+
+${PUPPET_PATH} module uninstall puppet-aci || true
+${PUPPET_PATH} module install -f pkg/puppet-aci-$version.$build.tar.gz
 
