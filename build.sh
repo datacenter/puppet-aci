@@ -30,6 +30,9 @@ if [ $FAILED -ne 0 ] ; then
 	${PUPPET_PATH} module build --trace
 	exit 1
 fi
+
+(cd pkg; rm puppet-aci-latest.tar.gz; ln -s puppet-aci-$version.$build.tar.gz puppet-aci-latest.tar.gz)
+
 ${PUPPET_PATH} module uninstall puppet-aci || true
 ${PUPPET_PATH} module install -f pkg/puppet-aci-$version.$build.tar.gz
 
